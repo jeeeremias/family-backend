@@ -1,0 +1,22 @@
+{
+  "name": "family-points-backend",
+  "version": "1.0.0",
+  "description": "A backend node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeeeremias/family-backend.git"
+  },
+  "author": "jeremias Pereira <jeremias.pereiraa@gmail.com> (http://jpreis.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeeeremias/family-backend/issues"
+  },
+  "homepage": "https://github.com/jeeeremias/family-backend#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
