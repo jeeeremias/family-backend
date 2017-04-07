@@ -3,8 +3,17 @@ var debug = require('debug')('test:server');
 var http = require('http');
 var config = require('../config/config.js');
 
+
+/**
+ * Get port from environment and store in Express.
+ */
+
 var port = normalizePort(process.env.PORT || config.expressPort);
 app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
 
 var server = http.createServer(app);
 
