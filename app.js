@@ -7,6 +7,9 @@ var app = express();
 // The only required route is for the calls to the mongopop API
 var kid = require('./routes/kid');
 
+// View engine setup
+app.set('view engine', 'jade');
+
 // Indicate the middleware that Express should use
 app.use(logger('dev'));
 app.use(bodyParser.json());

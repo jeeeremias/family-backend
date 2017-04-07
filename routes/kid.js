@@ -1,17 +1,14 @@
-var request = require("request");
 var express = require('express');
 var router 	= express.Router();
 
-var config = require('../config.js');
-var DB = require('../javascripts/db');
+var DB = require('../helpers/db');
+var controller = require('../controllers/kid');
 
 router.get('/', function(req, res, next) {
 
-	var kid = {
-		"name": "Maggie",
-		"score": 8
-	}
-	res.json(testObject);
+    var kid = new controller();
+	kid.save();
+	res.json('Success');
 });
 
 router.post('/', function(req, res, next) {
@@ -20,5 +17,7 @@ router.post('/', function(req, res, next) {
 		"name": "Maggie",
 		"score": 8
 	}
-	res.json(testObject);
+	res.json(kid);
 });
+
+module.exports = router;

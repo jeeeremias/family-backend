@@ -4,6 +4,7 @@
   "description": "A backend node project",
   "main": "index.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "test"
   },
   "repository": {
@@ -20,7 +21,9 @@
     "body-parser": "^1.17.1",
     "debug": "^2.6.3",
     "express": "^4.15.2",
+    "jade": "^1.11.0",
     "mongodb": "^2.2.25",
-    "mongoose": "^4.9.3"
+    "mongoose": "^4.9.3",
+    "morgan": "^1.8.1"
   }
 }
