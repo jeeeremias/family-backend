@@ -7,17 +7,28 @@ var controller = require('../controllers/kid');
 router.get('/', function(req, res, next) {
 
     var kid = new controller();
-	kid.save();
-	res.json('Success');
+	kid.findAll()
+        .then(function(results) {
+            res.json(results);
+        });
+});
+
+router.get('/:name', function(req, res, next) {
+
+    var kid = new controller();
+	kid.findOne({name: req.params.name})
+        .then(function(result) {
+            res.json(result);
+        });
 });
 
 router.post('/', function(req, res, next) {
 
-	var kid = {
-		"name": "Maggie",
-		"score": 8
-	}
-	res.json(kid);
+	var kid = new controller();
+    kid.save(req.body)
+        .then(function(saved) {
+            res.json(saved);
+        })
 });
 
 module.exports = router;

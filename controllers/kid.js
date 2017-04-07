@@ -6,17 +6,47 @@ function kidController() {
     this.db = new connection();
 }
 
-kidController.prototype.save = function() {
-    this.db.connect()
-        .then(function (database) {
-            var collection = database.collection('kids');
-            collection.insert({name: 'Maggie', score: 8}, function(err, result) {
-                collection.find({name: 'Maggie'}).toArray(function(err, docs) {
-                    console.log(docs[0]);
-                    database.close;
+kidController.prototype.save = function(kid) {
+    return new Promise((resolve, reject) => {
+        this.db.connect()
+            .then(function (database) {
+                var collection = database.collection('kids');
+                collection.insert(kid, function(err, result) {
+                    console.log(result);
+                    resolve(result);
                 })
             })
-        })
-}
+    })
+};
+
+kidController.prototype.findAll = function() {
+    return new Promise((resolve, reject) => {
+        this.db.connect()
+            .then(function (database) {
+                var collection = database.collection('kids');
+                collection
+                    .find()
+                    .toArray(function(err, docs) {
+                        console.log(docs);
+                        resolve(docs);
+                })
+            })
+    })
+};
+
+kidController.prototype.findOne = function(kid) {
+    return new Promise((resolve, reject) => {
+        this.db.connect()
+            .then(function (database) {
+                var collection = database.collection('kids');
+                collection
+                    .find(kid)
+                    .toArray(function(err, docs) {
+                        console.log(docs);
+                        resolve(docs[0]);
+                })
+            })
+    })
+};
 
 module.exports = kidController;
