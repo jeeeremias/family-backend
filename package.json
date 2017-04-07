@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/jeeeremias/family-backend#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.1",
+    "debug": "^2.6.3",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.3"
   }
 }
