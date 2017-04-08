@@ -87,4 +87,14 @@ DB.prototype.close = function() {
 	}
 }
 
-module.exports = DB;
+DB.prototype.get = function () {
+	if (this.db) {
+		// Return the connection instace of database
+		return this.db;
+	} else {
+		// Lost connection
+		throw 'Database not found';
+	}
+}
+
+module.exports = new DB();
