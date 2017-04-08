@@ -1,38 +1,27 @@
 var express = require('express');
+var router 	= express.Router();
 
-var db = require('../helpers/db');
+var controller = require('../models/kid');
 
-exports.save = function(kid) {
-    return new Promise(function(resolve, reject) {
-        db.get()
-            .collection('kids')
-            .insert(kid, function(err, result) {
-                if (err) reject(err);
-                resolve(result);
-            })
-    })
-};
+router.get('/', function(req, res, next) {
+	controller.findAll()
+        .then(function(results) {
+            res.json(results);
+        });
+});
 
-exports.findAll = function(res) {
-    return new Promise(function(resolve, reject) {
-        db.get()
-            .collection('kids')
-            .find()
-            .toArray(function(err, docs) {
-                if (err) reject(err);
-                resolve(docs);
-            })
-    })
-};
+router.get('/:name', function(req, res, next) {
+	controller.findOne({name: req.params.name})
+        .then(function(result) {
+            res.json(result);
+        });
+});
 
-exports.findOne = function(kid) {
-    return new Promise(function(resolve, reject) {
-        db.get()
-            .collection('kids')
-            .find(kid)
-            .toArray(function(err, docs) {
-                if (err) reject(err);
-                resolve(docs);
-            })
-    })
-};
+router.post('/', function(req, res, next) {
+    controller.save(req.body)
+        .then(function(saved) {
+            res.json(saved);
+        })
+});
+
+module.exports = router;
